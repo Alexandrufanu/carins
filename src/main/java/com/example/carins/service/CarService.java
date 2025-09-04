@@ -3,10 +3,12 @@ package com.example.carins.service;
 import com.example.carins.model.Car;
 import com.example.carins.repo.CarRepository;
 import com.example.carins.repo.InsurancePolicyRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CarService {
@@ -28,4 +30,9 @@ public class CarService {
         // TODO: optionally throw NotFound if car does not exist
         return policyRepository.existsActiveOnDate(carId, date);
     }
+
+    public Optional<Car> findCarById(Long carId) {
+        return carRepository.findById(carId);
+    }
+
 }
